@@ -40,6 +40,13 @@ public class arrayProblems {
         return isSorted;
     }
     // remove duplicates from an array : inplace
+    static void rotateArray(int[] arr){
+        int temp = arr[0];
+        for(int i=1;i<arr.length;i++){
+            arr[i-1] = arr[i];
+        }
+        arr[arr.length-1] = temp;
+    }
     static int removeDups(int[] arr){
         int i = 0;
         for(int j=1; j<arr.length;j++){
@@ -51,8 +58,8 @@ public class arrayProblems {
         return i-1;
     }
     public static void main(String[] args) {
-        int[] arr = {1,2,2,3,3,4,5,6,7,7,7,7};
-        System.out.println(removeDups(arr));
+        int[] arr = {1,2,3,4,5};
+        rotateArray(arr);
         System.out.println(Arrays.toString(arr));
     }
 }
