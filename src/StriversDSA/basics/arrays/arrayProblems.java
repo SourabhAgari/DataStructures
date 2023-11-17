@@ -3,6 +3,11 @@ package StriversDSA.basics.arrays;
 import java.util.Arrays;
 
 public class arrayProblems {
+    static void swap(int[] arr,int start,int end){
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+    }
     // find the largest
     static int largest(int[] arr){
         int largest = arr[0];
@@ -57,6 +62,7 @@ public class arrayProblems {
         }
         return i-1;
     }
+    // rotate array by d places
     static void rotateByDPlaces(int[] arr,int d){
         d = (d % arr.length);
         int temp[] = new int[d];
@@ -72,9 +78,26 @@ public class arrayProblems {
             l++;
         }
     }
+    // move zeroes to the end
+    static void moveZeros(int[] arr){
+        int j = -1;
+        // find the index of first occurrence of the 0
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==0){
+                j = i;
+                break;
+            }
+        }
+        for(int k=j+1;k<arr.length;k++){
+            if(arr[k] != 0){
+                swap(arr,k,j);
+                j++;
+            }
+        }
+    }
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
-        rotateByDPlaces(arr,3);
+        int[] arr = {1,0,0,2,3};
+        moveZeros(arr);
         System.out.println(Arrays.toString(arr));
     }
 }
